@@ -229,6 +229,9 @@ if (!gotTheLock) {
                     shell.openExternal(e.url);
                     return { action: 'deny' };
                 });
+                app.on('before-quit', () => {
+                    mainWindow?.removeAllListeners('close');
+                });
             } else {
                 mainWindow.show();
             }
